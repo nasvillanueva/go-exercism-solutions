@@ -33,14 +33,13 @@ func parseNotation(pos string) (int, int, error) {
 	if len(pos) != 2 {
 		return -1, -1, errors.New("Invalid notation")
 	}
-	posByte := []rune(pos)
 	// Get the difference of the ASCII decimal value of 'h' (105) and the ascii decmal value of
 	// the letter in the Algebraic notation then subtract it with 9 to get something between 1-8
 	//
 	// note: I could have used the ASCII Decimal value of 'i' (104) and then add 1 then subtract it
 	// with 9. but to reduce the computation, i used 'h' (105)
-	x := (9 - (105 - int(posByte[0])))
-	y := int(posByte[1] - '0')
+	x := (9 - (105 - int(pos[0])))
+	y := int(pos[1] - '0')
 	return x, y, nil
 }
 
