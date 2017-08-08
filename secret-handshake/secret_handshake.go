@@ -6,31 +6,26 @@ import (
 
 const testVersion = 2
 
+var messages = map[int]string{
+	0: "wink",
+	1: "double blink",
+	2: "close your eyes",
+	3: "jump",
+}
+
 func Handshake(code uint) []string {
 	secret := []string{}
 	binaryCode := []rune(toReversedBinary(code))
 	for index, val := range binaryCode {
-		if index == 0 && isOn(val) {
-			secret = append(secret, "wink")
-		}
-		if index == 1 && isOn(val) {
-			secret = append(secret, "double blink")
-		}
-		if index == 2 && isOn(val) {
-			secret = append(secret, "close your eyes")
-		}
-		if index == 3 && isOn(val) {
-			secret = append(secret, "jump")
-		}
-		if index == 4 && isOn(val) {
-			secret = reverseSecret(secret)
+		if val == 49 {
+			if index >= 0 && index <= 3 {
+				secret = append(secret, messages[index])
+			} else if index == 4 {
+				secret = reverseSecret(secret)
+			}
 		}
 	}
 	return secret
-}
-
-func isOn(bit rune) bool {
-	return string(bit) == "1"
 }
 
 func toReversedBinary(n uint) string {
