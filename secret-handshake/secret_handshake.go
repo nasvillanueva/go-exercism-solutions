@@ -6,11 +6,11 @@ import (
 
 const testVersion = 2
 
-var messages = map[int]string{
-	0: "wink",
-	1: "double blink",
-	2: "close your eyes",
-	3: "jump",
+var messages = []string{
+	"wink",
+	"double blink",
+	"close your eyes",
+	"jump",
 }
 
 func Handshake(code uint) []string {
