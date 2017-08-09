@@ -7,7 +7,7 @@ func Transform(in map[int][]string) map[string]int {
 
 	for score, letters := range in {
 		for _, letter := range letters {
-			out[string(letter[0] + 32)] = score
+			out[string(letter[0]+32)] = score
 		}
 	}
 
