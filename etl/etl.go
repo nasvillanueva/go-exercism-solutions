@@ -5,9 +5,9 @@ const testVersion = 1
 func Transform(in map[int][]string) map[string]int {
 	out := map[string]int{}
 
-	for i, letters := range in {
+	for score, letters := range in {
 		for _, letter := range letters {
-			out[string(letter[0] + 32)] = i
+			out[string(letter[0] + 32)] = score
 		}
 	}
 
